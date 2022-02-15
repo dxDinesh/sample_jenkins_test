@@ -1,0 +1,43 @@
+def defaultSupportedParameters = [
+    choice(choices: ['dev', 'prod'], description: 'choose the environment?', name: 'ENVIRONMENT'),
+    // Boolean paramters to choose stages to build
+    booleanparam(defaultvalue: false, description: 'Do you want create stage 1 ?',name: 'Stage 1'),
+    booleanparam(defaultvalue: false, description: 'Do you want create stage 2 ?',name: 'Stage 2'),
+    booleanparam(defaultvalue: false, description: 'Do you want create stage 3 ?',name: 'Stage 3'),
+    booleanparam(defaultvalue: false, description: 'Do you want create stage 4 ?',name: 'Stage 4'),
+    booleanparam(defaultvalue: false, description: 'Do you want create stage 5 ?',name: 'Stage 5'),
+    booleanparam(defaultvalue: false, description: 'Do you want create stage 6 ?',name: 'Stage 6')
+]
+
+properties([
+    disableConcurrentBuilds(),
+    parameters(defaultSupportedParameters)
+])
+
+node{
+    ansiColor('xterm') {
+        stage(stage 1)
+        {
+            sh "echo 'stage 1'"
+        }
+
+        stage(stage 2)
+        {
+            sh "echo 'stage 2'"
+        }
+
+        stage(stage 3)
+
+        {
+            sh "echo 'stage 3'"
+        }
+        Stage(stage 4)
+        {
+            sh "echo 'stage 4'"
+        }
+        stage(stage 5)
+        {
+            sh "echo 'stage 5'"
+        }
+    }
+}
